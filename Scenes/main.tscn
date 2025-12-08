@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmtm00lg8d8d4"]
+
+[ext_resource type="PackedScene" uid="uid://bdcvvsla0ebq2" path="res://Scenes/player_3d.tscn" id="1_jjgbg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
+sky_top_color = Color(0.493859, 0.42953, 0.442509, 1)
+sky_horizon_color = Color(0.687693, 0.66386, 0.658105, 1)
+ground_horizon_color = Color(0.687693, 0.66386, 0.658105, 1)
+
+[sub_resource type="Sky" id="Sky_jjgbg"]
+sky_material = SubResource("ProceduralSkyMaterial_7u77a")
+
+[sub_resource type="Environment" id="Environment_bo1nx"]
+background_mode = 2
+sky = SubResource("Sky_jjgbg")
+tonemap_mode = 2
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bo1nx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.912834, 0.400554, -0.0793118, 0, 0.194234, 0.980955, 0.40833, 0.895449, -0.177304, -2.67955, 33.1415, -5.9902)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(4.25, 0, 0, 0, 5.1, 0, 0, 0, 0.4, 0, 2.6, 0)
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D"]
+transform = Transform3D(0.448, 0, 0, 0, -1.63189e-08, -0.373333, 0, 4.76, -2.08066e-07, 0, -0.117647, 1.18698)
+operation = 2
+use_collision = true
+sides = 13
+
+[node name="FloorAndOuterWalls" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="OuterWall1" type="CSGBox3D" parent="FloorAndOuterWalls"]
+transform = Transform3D(-0.000460698, 0, -90.376, 0, 21.7756, 0, -0.399948, 0, 0.104104, 0.259926, 10.9101, -37.7316)
+use_collision = true
+
+[node name="OuterWall2" type="CSGBox3D" parent="FloorAndOuterWalls"]
+transform = Transform3D(-0.000460698, 0, -90.376, 0, 21.7756, 0, -0.399948, 0, 0.104104, 0.259926, 10.9101, 37.1473)
+use_collision = true
+
+[node name="OuterWall3" type="CSGBox3D" parent="FloorAndOuterWalls"]
+transform = Transform3D(-0.396582, 0, 0, 0, 21.7756, 0, 0, 0, 75.107, 45.0635, 10.9101, -0.303978)
+use_collision = true
+
+[node name="OuterWall4" type="CSGBox3D" parent="FloorAndOuterWalls"]
+transform = Transform3D(-0.396582, 0, 0, 0, 21.7756, 0, 0, 0, 75.107, -45.2, 10.9101, -0.303978)
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="FloorAndOuterWalls"]
+transform = Transform3D(90.5888, 0, 0, 0, -3.31004e-06, -0.4, 0, 75.7248, -1.74846e-08, 0, 0, 0)
+use_collision = true
+
+[node name="StartingRoom" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="SideRoomWall1" type="CSGBox3D" parent="StartingRoom"]
+transform = Transform3D(-4.25098e-07, 0, 0.4, 0, 5.1, 0, -9.72511, 0, -1.74846e-08, 6.92282, 2.6, 32.4971)
+use_collision = true
+
+[node name="SideRoomWall2" type="CSGBox3D" parent="StartingRoom"]
+transform = Transform3D(-4.25098e-07, 0, 0.4, 0, 5.1, 0, -9.72511, 0, -1.74846e-08, -2.42091, 2.6, 32.4971)
+use_collision = true
+
+[node name="FrontWall" type="CSGBox3D" parent="StartingRoom"]
+transform = Transform3D(9.72511, 0, 0, 0, 5.1, 0, 0, 0, 0.4, 2.24239, 2.6, 27.7464)
+use_collision = true
+
+[node name="Door" type="CSGBox3D" parent="StartingRoom/FrontWall"]
+transform = Transform3D(0.562741, 0, 0, 0, 0.589428, 0, 0, 0, 1.86354, 0, -0.179127, 0)
+operation = 2
+use_collision = true
+size = Vector3(0.345947, 1, 1)
+
+[node name="SecondRoom" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="SideRoomWall1" type="CSGBox3D" parent="SecondRoom"]
+transform = Transform3D(9.72511, 0, 0, 0, 5.1, 0, 0, 0, 0.4, -40.4023, 2.6, 1.68206)
+use_collision = true
+
+[node name="SideRoomWall2" type="CSGBox3D" parent="SecondRoom/SideRoomWall1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.3593)
+use_collision = true
+
+[node name="FrontWall" type="CSGBox3D" parent="SecondRoom/SideRoomWall1"]
+transform = Transform3D(-4.37114e-08, 0, -0.0411307, 0, 1, 0, 24.3128, 0, -4.37114e-08, 0.488494, 0, -11.7011)
+use_collision = true
+
+[node name="Door" type="CSGBox3D" parent="SecondRoom/SideRoomWall1/FrontWall"]
+transform = Transform3D(0.562741, 0, 0, 0, 0.589428, 0, 0, 0, 1.86354, 0, -0.179127, 0)
+operation = 2
+use_collision = true
+size = Vector3(0.345947, 1, 1)
+
+[node name="ThirdRoom" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="SideRoomWall1" type="CSGBox3D" parent="ThirdRoom"]
+transform = Transform3D(-9.72511, 0, -3.49691e-08, 0, 5.1, 0, 8.50196e-07, 0, -0.4, 40.197, 2.6, -7.45499)
+use_collision = true
+
+[node name="SideRoomWall2" type="CSGBox3D" parent="ThirdRoom/SideRoomWall1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.3593)
+use_collision = true
+
+[node name="FrontWall" type="CSGBox3D" parent="ThirdRoom/SideRoomWall1"]
+transform = Transform3D(-4.37114e-08, 0, -0.0411307, 0, 1, 0, 24.3128, 0, -4.37114e-08, 0.488494, 0, -11.7011)
+use_collision = true
+
+[node name="Door" type="CSGBox3D" parent="ThirdRoom/SideRoomWall1/FrontWall"]
+transform = Transform3D(0.562741, 0, 0, 0, 0.589428, 0, 0, 0, 1.86354, 0, -0.179127, 0)
+operation = 2
+use_collision = true
+size = Vector3(0.345947, 1, 1)
+
+[node name="FourthRoom" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="SideRoomWall1" type="CSGBox3D" parent="FourthRoom"]
+transform = Transform3D(-4.25098e-07, 0, -0.4, 0, 5.1, 0, 9.72511, 0, -1.74846e-08, -2.56781, 2.6, -32.7685)
+use_collision = true
+
+[node name="SideRoomWall2" type="CSGBox3D" parent="FourthRoom/SideRoomWall1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.3593)
+use_collision = true
+
+[node name="FrontWall" type="CSGBox3D" parent="FourthRoom/SideRoomWall1"]
+transform = Transform3D(-4.37114e-08, 0, -0.0411307, 0, 1, 0, 24.3128, 0, -4.37114e-08, 0.488494, 0, -11.7011)
+use_collision = true
+
+[node name="Door" type="CSGBox3D" parent="FourthRoom/SideRoomWall1/FrontWall"]
+transform = Transform3D(0.562741, 0, 0, 0, 0.589428, 0, 0, 0, 1.86354, 0, -0.179127, 0)
+operation = 2
+use_collision = true
+size = Vector3(0.345947, 1, 1)
+
+[node name="player3d" parent="." instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51336, 0.143807, -32.0564)
