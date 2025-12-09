@@ -9,6 +9,8 @@
 [node name="Box_B" parent="." instance=ExtResource("1_g2tbl")]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Box_B"]
+collision_layer = 4
+collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Box_B/RigidBody3D"]
 transform = Transform3D(0.625217, 0, 0, 0, 0.366886, 0, 0, 0, 0.417955, 0.000945479, 0.218797, -9.53097e-05)

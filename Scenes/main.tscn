@@ -52,6 +52,7 @@ sides = 13
 
 [node name="FloorAndOuterWalls" type="CSGCombiner3D" parent="."]
 use_collision = true
+collision_mask = 5
 
 [node name="OuterWall1" type="CSGBox3D" parent="FloorAndOuterWalls"]
 transform = Transform3D(-0.000460698, 0, -90.376, 0, 21.7756, 0, -0.399948, 0, 0.104104, 0.260281, 10.9101, -37.4232)
@@ -107,6 +108,7 @@ use_collision = true
 
 [node name="FourthRoom" type="CSGCombiner3D" parent="."]
 use_collision = true
+collision_mask = 5
 
 [node name="SideRoomWall1" type="CSGBox3D" parent="FourthRoom"]
 transform = Transform3D(-4.25098e-07, 0, -0.4, 0, 5.1, 0, 9.72511, 0, -1.74846e-08, -2.56781, 2.6, -32.7685)
@@ -128,6 +130,8 @@ size = Vector3(0.345947, 1, 1)
 
 [node name="player3d" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51336, 0.143807, -32.0564)
+collision_layer = 2
+collision_mask = 5
 
 [node name="Pillar" parent="." instance=ExtResource("2_bo1nx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.05818, 0, 0)

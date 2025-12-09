@@ -9,6 +9,7 @@
 [node name="Pillar_A" parent="." instance=ExtResource("1_rjv88")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pillar_A"]
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_A/StaticBody3D"]
 transform = Transform3D(0.766559, 0, 0, 0, 2.06809, 0, 0, 0, 0.766559, 0, 1.9996, 0)

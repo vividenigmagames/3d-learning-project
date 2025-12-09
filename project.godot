@@ -48,6 +48,13 @@ left_click={
 ]
 }
 
+[layer_names]
+
+3d_render/layer_1="World"
+3d_render/layer_2="Player"
+3d_render/layer_3="Light Objects"
+3d_render/layer_4="Heavy Objects"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
