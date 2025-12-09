@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdcvvsla0ebq2"]
 
-[ext_resource type="Script" uid="uid://cflb0sp80y100" path="res://Scenes/player_3d.gd" id="1_85mps"]
+[ext_resource type="Script" uid="uid://cflb0sp80y100" path="res://Scripts/player_3d.gd" id="1_85mps"]
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://player/sophia_skin/sophia_skin.tscn" id="1_ryx18"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_85mps"]

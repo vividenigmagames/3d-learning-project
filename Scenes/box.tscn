@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://s1ym6nu65owx"]
+
+[ext_resource type="PackedScene" uid="uid://6pf1nov2sif1" path="res://Assets/KayKit_Prototype_Bits_1.1_FREE/Assets/fbx/Box_B.fbx" id="1_g2tbl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oq5cr"]
+
+[node name="Box" type="Node3D"]
+
+[node name="Box_B" parent="." instance=ExtResource("1_g2tbl")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Box_B"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box_B/RigidBody3D"]
+transform = Transform3D(0.625217, 0, 0, 0, 0.366886, 0, 0, 0, 0.417955, 0.000945479, 0.218797, -9.53097e-05)
+shape = SubResource("BoxShape3D_oq5cr")
