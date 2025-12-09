@@ -5,12 +5,12 @@ extends CharacterBody3D
 @export var move_speed := 8.0
 @export var acceleration := 20.0
 @export var rotation_speed := 12.0
-#@export var jump_impulse := 12.0
+@export var jump_impulse := 12.0
 
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
-#var _gravity := -30.0
+var _gravity := -30.0
 
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
@@ -44,33 +44,32 @@ func _physics_process(delta: float) -> void:
 	move_direction.y = 0.0 #helps offset downwards angle of camera, otherwise player would try and run down into the floor
 	move_direction = move_direction.normalized()
 	
-	#if not is_on_floor():
-		#velocity.y += _gravity * delta
-	#else:
+	
+	var y_velocity := velocity.y
+	velocity.y = 0.0
 	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
-	#var y_velocity := velocity.y
-	#velocity.y = 0.0
-	#velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
-	#velocity.y = y_velocity + _gravity * delta
+	velocity.y = y_velocity + _gravity * delta
 	move_and_slide()
 	
-	#var is_starting_jump := Input.is_action_just_pressed("jump") and is_on_floor()
-	#if is_starting_jump:
-	#	velocity.y += jump_impulse
+	var is_starting_jump := Input.is_action_just_pressed("jump") and is_on_floor()
+	if is_starting_jump:
+		velocity.y += jump_impulse
 	
 	if move_direction.length() > 0.2:
 		_last_movement_direction = move_direction
 	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
 	_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta) #lerp angle performs calculation for angles
 	
-	#if is_starting_jump:
-	#	_skin.jump()
-	#elif not is_on_floor() and velocity.y < 0:
-	#	_skin.fall()
-	
-	var ground_speed := velocity.length()
-	if ground_speed > 0.0:
-		_skin.move()
-	else:
-		_skin.idle()
+	if is_starting_jump:
+		_skin.jump()
+	elif not is_on_floor() and velocity.y < 0:
+		_skin.fall()
+	elif is_on_floor():
+		var ground_speed := velocity.length()
+		if ground_speed > 0.0:
+			_skin.move()
+		else:
+			_skin.idle()
+		
+
 	

@@ -38,7 +38,7 @@ sides = 13
 use_collision = true
 
 [node name="OuterWall1" type="CSGBox3D" parent="FloorAndOuterWalls"]
-transform = Transform3D(-0.000460698, 0, -90.376, 0, 21.7756, 0, -0.399948, 0, 0.104104, 0.259926, 10.9101, -37.7316)
+transform = Transform3D(-0.000460698, 0, -90.376, 0, 21.7756, 0, -0.399948, 0, 0.104104, 0.259641, 10.9101, -37.9789)
 use_collision = true
 
 [node name="OuterWall2" type="CSGBox3D" parent="FloorAndOuterWalls"]
