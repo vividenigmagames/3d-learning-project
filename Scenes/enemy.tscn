@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct4fcdrksttva"]
+
+[ext_resource type="PackedScene" uid="uid://gii3igxw4gsd" path="res://Assets/KayKit_Prototype_Bits_1.1_FREE/Assets/gltf/Dummy_Base.gltf" id="1_hghv2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1f0kj"]
+
+[node name="Enemy" type="CharacterBody3D"]
+
+[node name="Dummy_Base2" parent="." instance=ExtResource("1_hghv2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9600959, 0)
+shape = SubResource("CapsuleShape3D_1f0kj")
