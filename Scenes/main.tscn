@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmtm00lg8d8d4"]
+[gd_scene load_steps=15 format=3 uid="uid://bmtm00lg8d8d4"]
 
 [ext_resource type="PackedScene" uid="uid://bdcvvsla0ebq2" path="res://Scenes/player_3d.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://bihl1inevdqh6" path="res://Scripts/main.gd" id="1_kry3j"]
 [ext_resource type="PackedScene" uid="uid://c5eivjnbqq3ba" path="res://Scenes/StaticPillar.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://s1ym6nu65owx" path="res://Scenes/box.tscn" id="3_8gbba"]
 [ext_resource type="AudioStream" uid="uid://c5vuaoxt2hffs" path="res://Assets/Cuddle Clouds.mp3" id="5_21xkr"]
-[ext_resource type="PackedScene" uid="uid://ct4fcdrksttva" path="res://Scenes/enemy.tscn" id="6_21xkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
 sky_top_color = Color(0.493859, 0.42953, 0.442509, 1)
@@ -153,6 +152,3 @@ transform = Transform3D(0.562741, 0, 0, 0, 0.589428, 0, 0, 0, 1.86354, 0, -0.179
 operation = 2
 use_collision = true
 size = Vector3(0.345947, 1, 1)
-
-[node name="Enemy" parent="." instance=ExtResource("6_21xkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.29125, 0.20000076, 33.926456)
