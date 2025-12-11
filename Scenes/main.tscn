@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmtm00lg8d8d4"]
+[gd_scene load_steps=14 format=3 uid="uid://bmtm00lg8d8d4"]
 
 [ext_resource type="PackedScene" uid="uid://bdcvvsla0ebq2" path="res://Scenes/player_3d.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://bihl1inevdqh6" path="res://Scripts/main.gd" id="1_kry3j"]
 [ext_resource type="PackedScene" uid="uid://c5eivjnbqq3ba" path="res://Scenes/StaticPillar.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://s1ym6nu65owx" path="res://Scenes/box.tscn" id="3_8gbba"]
+[ext_resource type="AudioStream" uid="uid://c5vuaoxt2hffs" path="res://Assets/Cuddle Clouds.mp3" id="5_21xkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
 sky_top_color = Color(0.493859, 0.42953, 0.442509, 1)
@@ -32,6 +34,7 @@ albedo_color = Color(0.00784314, 0.0470588, 0.388235, 1)
 albedo_color = Color(0.00784314, 0.0470588, 0.388235, 1)
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_kry3j")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bo1nx")
@@ -130,7 +133,6 @@ size = Vector3(0.345947, 1, 1)
 
 [node name="player3d" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51336, 0.143807, -32.0564)
-collision_layer = 2
 collision_mask = 5
 
 [node name="Pillar" parent="." instance=ExtResource("2_bo1nx")]
@@ -138,3 +140,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.05818, 0, 0)
 
 [node name="Box" parent="." instance=ExtResource("3_8gbba")]
 transform = Transform3D(2.95451, 0, 0, 0, 2.95451, 0, 0, 0, 2.95451, 7.4, 0.2, 0.7)
+
+[node name="AudioStreamPlayerBGMusic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_21xkr")
+volume_db = 20.0
+bus = &"Music"

@@ -2,10 +2,10 @@ extends CharacterBody3D
 
 @export_group("Camera")
 @export_range(0.0, 1.0) var mouse_sensitivity := 0.25
-@export var move_speed := 20.0
+@export var move_speed := 10.0
 @export var acceleration := 20.0
 @export var rotation_speed := 12.0
-@export var jump_impulse := 40.0
+@export var jump_impulse := 15.0
 @export var push_force := 80.0
 
 
@@ -38,6 +38,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction = event.screen_relative * mouse_sensitivity
 
 func _physics_process(delta: float) -> void:
+	#Method to load in different sound effects for different circumstances. Sound files need to be loaded directly in.
+	#this is just an example using the "jump" noise as a seperate sound
+	var playerStoneWalkingSound := load("res://Assets/foley_footstep_carpet_3.wav")
+	var playerGrassWalkingSound := load("res://Assets/whoosh_2.wav")
 	#Camera moverment and control to stop it from over rotating
 	_camera_pivot.rotation.x += _camera_input_direction.y * delta
 	_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, -PI / 6.0, PI / 3.0)
@@ -61,6 +65,15 @@ func _physics_process(delta: float) -> void:
 	var y_velocity := velocity.y
 	velocity.y = 0.0
 	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
+	
+	#If statement for making step audio only play while walking
+	if is_on_floor():
+		if velocity:
+			if !playerWalkingAudioStream.playing:
+				#Used for loading different sounds example at top of process physics function
+				#playerWalkingAudioStream.stream = (playerStoneWalkingSound)
+				playerWalkingAudioStream.play()
+				
 	velocity.y = y_velocity + _gravity * delta
 	move_and_slide()
 	
